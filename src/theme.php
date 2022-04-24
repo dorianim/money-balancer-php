@@ -39,7 +39,7 @@ class LandingpageTheme
         $this->_resultLevels['permissionDenied'] = 'danger';
         $this->_resultLevels['generateJitsiLinkRoomMustNotBeEmpty'] = 'danger';
         $this->_resultLevels['generateJitsiLinkSuccessfull'] = 'success';
-        $this->_resultLevels['timerSetSuccessfully'] = 'success';
+        $this->_resultLevels['purchaseAddedSuccessfully'] = 'success';
     }
 
     public function printPage($page, $parameters)

@@ -56,10 +56,17 @@ class StorageHelper
 
     private function _writeBalanceData($balance, $data)
     {
-        $dataFile = fopen($this->_dataDir . "/" . $balance . ".json", "w") or die("Unable to open file!");
+        if(!file_exists($this->_filePath($balance))) {
+            mkdir(dirname($this->_filePath($balance)), 0777, true);
 
-        fwrite($dataFile, json_encode($data));
-        fclose($dataFile) or die("Unable to write to data file!");
+        }
+
+        file_put_contents($this->_filePath($balance), json_encode($data));
     }
 
+
+    private function _filePath($balance)
+    {
+        return $this->_dataDir . "/" . $balance . ".json";
+    }
 }

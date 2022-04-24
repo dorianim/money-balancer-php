@@ -21,7 +21,7 @@ $translations['results']['oldPasswordIsWrong'] = "The current password is wrong!
 $translations['results']['newPasswordAndRepeatDidNotMatch'] = "The passwords are not equal.";
 $translations['results']['newPasswordMustNotBeOldPassword'] = "The new password must not be the old password.";
 $translations['results']['passwordChangedSuccessfully'] = "Your password was successfully changed.";
-$translations['results']['timerSetSuccessfully'] = "The timer was started successfully.";
+$translations['results']['purchaseAddedSuccessfully'] = "The purchase was added successfully.";
 
 $translations['globals']['title'] = "Money Balancer";
 $translations['globals']['usernameLabel'] = "Username";

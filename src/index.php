@@ -180,7 +180,7 @@ class SyncedTimer
         $name = $_POST["name"];
         $amount = $_POST["amount"];
         $this->_storageHelper->addPurchase("balance", $_SESSION["auth"]["username"], $name, $amount);
-        $_SESSION['lastResult'] = "timerSetSuccessfully";
+        $_SESSION['lastResult'] = "purchaseAddedSuccessfully";
     }
 
     // ----------------------------
