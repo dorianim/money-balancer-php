@@ -1,0 +1,11 @@
+version: "2"
+services:
+  money-balancer:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./config:/config
+      - ./src:/var/www/html
+    ports:
+      - 8888:80
