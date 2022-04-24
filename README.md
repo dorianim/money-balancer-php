@@ -14,12 +14,7 @@
     </a>
 </p>
 
-This is a docker container for the [Meeting room booking system](https://github.com/meeting-room-booking-system/mrbs-code).
-
-## Features
-- Automatic installation
-- Easy updating
-- [Modern MRBS theme](https://github.com/dorianim/modern-mrbs-theme) included
+This is meant for situations where multiple people pay for stuff they use together. Whenever someone pays for something, they enter how much they paid. This tool shows everybody if they have paid more or less than they should have.
 
 # Installation
-Don't use this. Its just quick and dirty and not really useable.
+Don't use this. Its just quick and dirty and not really useable. It was created in two hours and not clean or secure. Just ignore this repo.
