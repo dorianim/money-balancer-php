@@ -10,7 +10,7 @@ class SyncedTimer
 {
 
     private $_serverConfig = array(
-        "hideIndexPhp" => false
+        "hideIndexPhp" => true
     );
     private $_themeConfig = array();
     private $_translations;
