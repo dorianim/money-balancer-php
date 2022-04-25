@@ -115,65 +115,6 @@ $this->_printFooter();
     // - JavaScript -
     // --------------
 
-    private function _printTimerJs($username)
-    {
-    ?>
-        <script>
-            var currentData = {};
-
-            const zeroPad = (num, places) => String(num).padStart(places, '0')
-            var processData = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    currentData = JSON.parse(this.responseText);
-                    if (currentData["status"] === 200) {
-                        currentData = currentData["data"]
-                    } else {
-                        document.getElementById("timer").innerHTML = "error: " + this.status
-                    }
-                } else if (this.readyState === 4 && this.status !== 0) {
-                    document.getElementById("timer").innerHTML = "error: " + this.status
-                }
-            }
-
-            function loadData() {
-                xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = processData;
-                xmlhttp.open("GET", "<?= $this->_globalConfig["basePath"] ?>/api/<?= $username ?>", true);
-                xmlhttp.send();
-            }
-
-            function setTimerText() {
-                time = currentData["time"]
-                header = currentData["header"]
-                startedAt = currentData["startedAt"]
-
-                passedSeconds = (Date.now() / 1000) - startedAt;
-                remaningSeconds = parseInt(time * 60 - passedSeconds);
-
-                if (remaningSeconds < 0) {
-                    remaningSeconds = 0
-                }
-
-                var remaningHours = zeroPad(parseInt(remaningSeconds / 60 / 60) % (60 * 60), 2)
-                var remaningMinutes = zeroPad(parseInt(remaningSeconds / 60) % 60, 2)
-                var remaningSeconds = zeroPad(remaningSeconds % 60, 2)
-                document.getElementById("timer").innerHTML = remaningHours + ":" + remaningMinutes + ":" + remaningSeconds
-                document.getElementById("header").innerHTML = header
-            }
-
-            loadData();
-
-            var dataLoader = setInterval(function() {
-                loadData();
-            }, 5000)
-
-            var timerRefresher = setInterval(function() {
-                setTimerText()
-            }, 1000)
-        </script>
-    <?php
-    }
-
     // -----------
     // - Helpers -
     // -----------
