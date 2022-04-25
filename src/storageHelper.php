@@ -31,7 +31,7 @@ class StorageHelper
         $userCount = count(array_keys($data));
         $average = $totalSum / $userCount;
 
-        return $thisUsersSum - $average;
+        return ($thisUsersSum - $average) * $userCount;
     }
 
     function addPurchase($balance, $thisUser, $name, $amount, $time) {
