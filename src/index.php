@@ -99,7 +99,7 @@ class SyncedTimer
     {
         header('Content-Type: application/json');
         header('Access-Control-Allow-Origin: *');
-        $allUserdata = $this->_storageHelper->loadUserdata();
+        $allUserdata = $this->_storageHelper->loadUserdata("balance", $username, 0, 1000);
         if (array_key_exists($username, $allUserdata)) {
             $userdata = $allUserdata[$username];
             die(json_encode(array(
