@@ -1,7 +1,15 @@
+FROM alpine as builder
+
+COPY . /src
+RUN apk add git && \
+  echo "**** adding version ****" && \
+  cd /src && \
+  export VERSION=$(git describe --exact-match --tags $(git log -n1 --pretty='%h') || echo "dev - $(git rev-parse --short HEAD)") && \
+  printf "<?php\n\$VERSION = \"$VERSION\";\n" > ./version.php
+
 FROM ghcr.io/linuxserver/baseimage-alpine-nginx:2021.11.04
 
-# versions
-
+ARG gitcommithash
 LABEL maintainer="Dorian Zedler <mail@dorian.im>"
 
 ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
@@ -51,6 +59,7 @@ RUN \
 
 COPY root/ /
 COPY src/ /var/www/html
+COPY --from=builder /src/version.php /var/www/html
 
 VOLUME /config
 EXPOSE 80

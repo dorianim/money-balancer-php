@@ -4,6 +4,7 @@ define('L_EXEC', true);
 require_once './theme.php';
 require_once './strings.php';
 require_once './storageHelper.php';
+require_once './version.php';
 
 class SyncedTimer
 {
