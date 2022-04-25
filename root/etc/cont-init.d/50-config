@@ -15,10 +15,6 @@ mkdir -p \
 [[ ! -s "/config/www/config.inc.php" ]] && \
   echo "WARNING: zero-length config.inc.php file detected. Please delete /config/www/config.inc.php and restart the container"
 
-# link assets
-rm -rf /var/www/html/assets
-ln -s /config/www/assets /var/www/html/assets
-
 # check for the mysql endpoint for 30 seconds
 END=$((SECONDS+30))
 while [ ${SECONDS} -lt ${END} ] && [ -n "${DB_HOST+x}" ]; do
