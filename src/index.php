@@ -178,9 +178,13 @@ class SyncedTimer
 
     private function _handleBalanceSubmit()
     {
-        $name = $_POST["name"];
-        $amount = $_POST["amount"];
-        $this->_storageHelper->addPurchase("balance", $_SESSION["auth"]["username"], $name, $amount);
+        $this->_storageHelper->addPurchase(
+            "balance", 
+            $_SESSION["auth"]["username"], 
+            $_POST["name"], 
+            $_POST["amount"], 
+            time()
+        );
         $_SESSION['lastResult'] = "purchaseAddedSuccessfully";
     }
 

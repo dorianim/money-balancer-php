@@ -6,6 +6,6 @@ services:
       context: .
     volumes:
       - ./config:/config
-      #- ./src:/var/www/html
+      - ./src:/var/www/html
     ports:
       - 8888:80

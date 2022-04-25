@@ -47,12 +47,12 @@ RUN \
     tar && \
   echo "**** configure php-fpm ****" && \
   sed -i 's/;clear_env = no/clear_env = no/g' /etc/php7/php-fpm.d/www.conf && \
+  echo "catch_workers_output = yes" >> /etc/php7/php-fpm.d/www.conf && \
   echo "env[PATH] = /usr/local/bin:/usr/bin:/bin" >> /etc/php7/php-fpm.conf
 
 RUN \
   echo "**** prepare root ****" && \
   rm -rf /var/www/html && \
-  echo "catch_workers_output = yes" >> /etc/php7/php-fpm.d/www.conf && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/*

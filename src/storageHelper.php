@@ -34,7 +34,7 @@ class StorageHelper
         return $thisUsersSum - $average;
     }
 
-    function addPurchase($balance, $thisUser, $name, $amount) {
+    function addPurchase($balance, $thisUser, $name, $amount, $time) {
         $data = $this->_loadBalanceData($balance);
         if(!isset($data[$thisUser])) {
             $data[$thisUser] = array();
@@ -42,7 +42,8 @@ class StorageHelper
 
         array_push($data[$thisUser], array(
             "name" => $name,
-            "amount" => $amount
+            "amount" => $amount,
+            "time" => $time
         ));
         $this->_writeBalanceData($balance, $data);
 
