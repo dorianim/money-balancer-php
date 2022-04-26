@@ -70,7 +70,7 @@ class StorageHelper
         }
 
         usort($ret, function ($item1, $item2) {
-            return $item1['time'] <=> $item2['time'];
+            return $item2['time'] <=> $item1['time'];
         });
 
         return array_slice($ret, $offset, $amount);
