@@ -69,7 +69,7 @@ class StorageHelper
             }
         }
 
-        usort($data, function ($item1, $item2) {
+        usort($ret, function ($item1, $item2) {
             return $item1['time'] <=> $item2['time'];
         });
 
