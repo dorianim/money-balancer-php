@@ -52,6 +52,25 @@ class StorageHelper
         }
     }
 
+   
+
+    function removePurchase($balance, $thisUser, $name, $amount, $time)
+    {
+   
+            $data = $this->_loadBalanceData($balance);
+
+            foreach ($data as $user => $purchases) {
+                foreach ($purchases as $purchase) {
+                    if ($user == $thisUser && $purchase["name"] == $name && $purchase["amount"] == $amount && $purchase["time"] == $time) {
+
+                        unset($purchase);
+                        $this->_writeBalanceData($balance, $data);
+                        return;
+                    }
+                }
+            }
+    }
+
     function loadUserData($balance, $thisUser, $offset, $amount)
     {
 
@@ -89,20 +108,6 @@ class StorageHelper
         }
 
         file_put_contents($this->_filePath($balance), json_encode($data));
-    }
-
-    # To implement
-    private function _removeBalanceData($balance, $data)
-    {
-        if (file_exists($this->_filePath($balance))) {
-
-
-            $contents = file_get_contents($balance);
-            $contents = str_replace($data, '', $contents);
-            file_put_contents($balance, $contents);
-
-            file_put_contents($this->_filePath($balance), json_encode($data));
-        }
     }
 
     private function _filePath($balance)

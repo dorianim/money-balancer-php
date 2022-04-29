@@ -253,6 +253,7 @@ class LandingpageTheme
                             <th scope="col">Description</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Time</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -266,6 +267,15 @@ class LandingpageTheme
                                 <th scope="row"><?php echo $purchase["name"] ?></th>
                                 <td><?php echo $purchase["amount"] ?></td>
                                 <td><?php echo date("Y-m-d H:i:s", $purchase["time"]) ?></td>
+                                <td> <?php if ($purchase["edit"]) { ?>
+                                        <form method="post" action="balance/remove" id="<?php echo $purchase["name"] ?><?php echo $purchase["time"] ?>" >
+                                            <input type="hidden" name="name"  value="<?php echo $purchase["name"] ?>">
+                                            <input type="hidden" name="amount"  value="<?php echo $purchase["amount"] ?>">
+                                            <input type="hidden"  name="time"  value="<?php echo $purchase["time"] ?>">
+                                            <button type="submit" class="btn btn-secondary btn-sm" form="<?php echo $purchase["name"] ?><?php echo $purchase["time"] ?>">X</button>
+                                        </form>
+                                        <?php } ?>
+                                </td>
                             </tr>
                         <?php
                         }

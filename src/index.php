@@ -41,7 +41,7 @@ class SyncedTimer
         $this->_updatePermissions();
         $this->_checkPagePermissions();
 
-        if ($this->_stringEndsWith($this->_path, "submit")) {
+        if ($this->_stringEndsWith($this->_path, "submit") || $this->_stringEndsWith($this->_path, "remove")) {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 $this->_redirect('/');
             }
@@ -49,6 +49,11 @@ class SyncedTimer
             switch ($this->_path) {
                 case '/balance/submit':
                     $this->_handleBalanceSubmit();
+                    $this->_redirect('/balance');
+                    break;
+
+                case '/balance/remove':
+                    $this->_handleBalanceRemove();
                     $this->_redirect('/balance');
                     break;
 
@@ -125,13 +130,13 @@ class SyncedTimer
 
     private function _loadUserFromHeaders()
     {
-        if(!isset($_SERVER["HTTP_X_AUTHENTIK_USERNAME"])) {
+        if (!isset($_SERVER["HTTP_X_AUTHENTIK_USERNAME"])) {
             unset($_SESSION["auth"]);
             return;
         }
 
         $_SESSION["auth"]["loggedIn"] = true;
-        $_SESSION["auth"]["username"] = $_SERVER["HTTP_X_AUTHENTIK_USERNAME"]   ;
+        $_SESSION["auth"]["username"] = $_SERVER["HTTP_X_AUTHENTIK_USERNAME"];
     }
 
     private function _updatePermissions()
@@ -179,14 +184,29 @@ class SyncedTimer
     private function _handleBalanceSubmit()
     {
         $this->_storageHelper->addPurchase(
-            "balance", 
-            $_SESSION["auth"]["username"], 
-            $_POST["name"], 
-            $_POST["amount"], 
+            "balance",
+            $_SESSION["auth"]["username"],
+            $_POST["name"],
+            $_POST["amount"],
             time()
         );
         $_SESSION['lastResult'] = "purchaseAddedSuccessfully";
     }
+
+    private function _handleBalanceRemove()
+    {
+
+        $this->_storageHelper->removePurchase(
+            "balance",
+            $_SESSION["auth"]["username"],
+            $_POST["name"],
+            $_POST["amount"],
+            $_POST["time"]
+
+        );
+    }
+
+
 
     // ----------------------------
     // - General helper functions -
