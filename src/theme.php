@@ -262,19 +262,18 @@ class LandingpageTheme
                         foreach ($this->_storageHelper->loadUserData("balance", $_SESSION["auth"]["username"], 0, 30) as $purchase) {
                         ?>
 
-                            <tr class="<?php if ($purchase["edit"]) echo  "table-primary";
-                                        else "table-light" ?> ">
-                                <th scope="row"><?php echo $purchase["name"] ?></th>
-                                <td><?php echo $purchase["amount"] ?></td>
-                                <td><?php echo date("Y-m-d H:i:s", $purchase["time"]) ?></td>
-                                <td> <?php if ($purchase["edit"]) { ?>
-                                        <form method="post" action="balance/remove" id="<?php echo $purchase["name"] ?><?php echo $purchase["time"] ?>" >
-                                            <input type="hidden" name="name"  value="<?php echo $purchase["name"] ?>">
-                                            <input type="hidden" name="amount"  value="<?php echo $purchase["amount"] ?>">
-                                            <input type="hidden"  name="time"  value="<?php echo $purchase["time"] ?>">
-                                            <button type="submit" class="btn btn-secondary btn-sm" form="<?php echo $purchase["name"] ?><?php echo $purchase["time"] ?>">X</button>
+                            <tr class="<?= $purchase["edit"] ? "table-primary":"table-light" ?> ">
+                                <th scope="row"><?= $purchase["name"] ?></th>
+                                <td><?= $purchase["amount"] ?></td>
+                                <td><?= date("Y-m-d H:i:s", $purchase["time"]) ?></td>
+                                <td> <?php if ($purchase["edit"]): ?>
+                                        <form method="post" action="balance/remove">
+                                            <input type="hidden" name="name"  value="<?= $purchase["name"] ?>">
+                                            <input type="hidden" name="amount"  value="<?= $purchase["amount"] ?>">
+                                            <input type="hidden"  name="time"  value="<?= $purchase["time"] ?>">
+                                            <button type="submit" class="btn btn-secondary btn-sm">X</button>
                                         </form>
-                                        <?php } ?>
+                                        <?php endif; ?>
                                 </td>
                             </tr>
                         <?php
