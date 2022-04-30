@@ -18,3 +18,6 @@ This is meant for situations where multiple people pay for stuff they use togeth
 
 # Installation
 Don't use this. Its just quick and dirty and not really useable. It was created in two hours and not clean or secure. Just ignore this repo.
+
+# Security
+This is not secure at all, there are multiple things missing, for example XSS and CSRF Protection. If you are mad enough to use it, make sure to put it behind a forward authentication proxy like [authentik](https://github.com/goauthentik/authentik), [authelia](https://github.com/authelia/authelia) or [oauth2-proyx](https://github.com/oauth2-proxy/oauth2-proxy). Also, you should only let trusted people use this.
