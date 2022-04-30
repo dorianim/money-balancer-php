@@ -138,7 +138,8 @@ class LandingpageTheme
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
             <!-- Bootstrap -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
             <style>
@@ -264,18 +265,20 @@ class LandingpageTheme
                         foreach ($this->_storageHelper->loadUserData("balance", $_SESSION["auth"]["username"], 0, 30) as $purchase):
                         ?>
 
-                            <tr class="<?= $purchase["edit"] ? "table-primary":"table-light" ?> ">
+                            <tr class="<?= $purchase["edit"] ? "table-primary":"table-light" ?>">
                                 <th scope="row"><?= $purchase["name"] ?></th>
                                 <td><?= $purchase["amount"] ?></td>
                                 <td><?= date("Y-m-d H:i:s", $purchase["time"]) ?></td>
-                                <td> <?php if ($purchase["edit"]): ?>
-                                        <form method="post" action="balance/remove">
-                                            <input type="hidden" name="name"  value="<?= $purchase["name"] ?>">
-                                            <input type="hidden" name="amount"  value="<?= $purchase["amount"] ?>">
-                                            <input type="hidden"  name="time"  value="<?= $purchase["time"] ?>">
-                                            <button type="submit" class="btn btn-secondary btn-sm">X</button>
-                                        </form>
-                                        <?php endif; ?>
+                                <td style="text-align: end;"> <?php if ($purchase["edit"]): ?>
+                                    <form method="post" action="balance/remove">
+                                        <input type="hidden" name="name"  value="<?= $purchase["name"] ?>">
+                                        <input type="hidden" name="amount"  value="<?= $purchase["amount"] ?>">
+                                        <input type="hidden"  name="time"  value="<?= $purchase["time"] ?>">
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
                                 </td>
                             </tr>
                         <?php
