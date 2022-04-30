@@ -79,10 +79,11 @@ class LandingpageTheme
                     <h1><?= $balance ?></h1>
                 </div>
 
+                <?php $this->_printResultAlert(); ?>
+
                 <div class="card text-dark bg-light mb-3">
                     <div class="card-header w-100"><?= $this->_trId("addPurchase") ?></div>
                     <div class="card-body w-100" style="text-align: left;">
-                        <?php $this->_printResultAlert(); ?>
                         <form method="post" action="balance/submit">
                             <div class="mb-3">
                                 <label for="name"><?= $this->_trId("name") ?></label>
