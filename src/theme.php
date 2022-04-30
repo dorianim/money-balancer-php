@@ -259,7 +259,7 @@ class LandingpageTheme
                     <tbody>
                         <?php
 
-                        foreach ($this->_storageHelper->loadUserData("balance", $_SESSION["auth"]["username"], 0, 30) as $purchase) {
+                        foreach ($this->_storageHelper->loadUserData("balance", $_SESSION["auth"]["username"], 0, 30) as $purchase):
                         ?>
 
                             <tr class="<?= $purchase["edit"] ? "table-primary":"table-light" ?> ">
@@ -277,7 +277,7 @@ class LandingpageTheme
                                 </td>
                             </tr>
                         <?php
-                        }
+                        endforeach;
                         ?>
                     </tbody>
                 </table>
