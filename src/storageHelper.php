@@ -60,10 +60,14 @@ class StorageHelper
             $data = $this->_loadBalanceData($balance);
 
             foreach ($data as $user => $purchases) {
-                foreach ($purchases as $purchase) {
-                    if ($user == $thisUser && $purchase["name"] == $name && $purchase["amount"] == $amount && $purchase["time"] == $time) {
-
-                        unset($purchase);
+                if($user != $thisUser) {
+                    continue;
+                }
+                
+                for ($i = 0; $i < count($purchases); $i++) {
+                    $purchase = $purchases[$i];
+                    if ($purchase["name"] == $name && $purchase["amount"] == $amount && $purchase["time"] == $time) {
+                        unset($data[$user][$i]);
                         $this->_writeBalanceData($balance, $data);
                         return TRUE;
                     }
