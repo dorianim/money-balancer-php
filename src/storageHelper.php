@@ -54,27 +54,24 @@ class StorageHelper
 
    
 
-    function removePurchase($balance, $thisUser, $name, $amount, $time)
+    function removePurchase($balance, $user, $name, $amount, $time)
     {
-   
-            $data = $this->_loadBalanceData($balance);
+        $data = $this->_loadBalanceData($balance);
 
-            foreach ($data as $user => $purchases) {
-                if($user != $thisUser) {
-                    continue;
-                }
-                
-                for ($i = 0; $i < count($purchases); $i++) {
-                    $purchase = $purchases[$i];
-                    if ($purchase["name"] == $name && $purchase["amount"] == $amount && $purchase["time"] == $time) {
-                        unset($data[$user][$i]);
-                        $this->_writeBalanceData($balance, $data);
-                        return TRUE;
-                    }
-                }
-            }
-
+        if(!isset($data[$user])) {
+            die();
             return FALSE;
+        }
+
+        foreach($data[$user] as $i => $purchase) {
+            if ($purchase["name"] == $name && $purchase["amount"] == $amount && $purchase["time"] == $time) {
+                unset($data[$user][$i]);
+                $this->_writeBalanceData($balance, $data);
+                return TRUE;
+            }
+        }
+
+        return FALSE;
     }
 
     function loadUserData($balance, $thisUser, $offset, $amount)
