@@ -23,7 +23,7 @@ $translations['results']['newPasswordMustNotBeOldPassword'] = "The new password 
 $translations['results']['passwordChangedSuccessfully'] = "Your password was successfully changed.";
 $translations['results']['purchaseAddedSuccessfully'] = "The purchase was added successfully.";
 $translations['results']['purchaseDeleteSuccess'] = "The purchase was deleted successfully.";
-$translations['results']['purchaseDeleteError'] = "The purchase was deleted successfully.";
+$translations['results']['purchaseDeleteError'] = "The purchase could not be deleted.";
 
 $translations['globals']['title'] = "Money Balancer";
 $translations['globals']['usernameLabel'] = "Username";
