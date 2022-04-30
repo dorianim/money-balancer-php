@@ -65,10 +65,12 @@ class StorageHelper
 
                         unset($purchase);
                         $this->_writeBalanceData($balance, $data);
-                        return;
+                        return TRUE;
                     }
                 }
             }
+
+            return FALSE;
     }
 
     function loadUserData($balance, $thisUser, $offset, $amount)

@@ -40,6 +40,8 @@ class LandingpageTheme
         $this->_resultLevels['generateJitsiLinkRoomMustNotBeEmpty'] = 'danger';
         $this->_resultLevels['generateJitsiLinkSuccessfull'] = 'success';
         $this->_resultLevels['purchaseAddedSuccessfully'] = 'success';
+        $this->_resultLevels['purchaseDeleteSuccess'] = 'success';
+        $this->_resultLevels['purchaseDeleteError'] = 'danger';
     }
 
     public function printPage($page, $parameters)

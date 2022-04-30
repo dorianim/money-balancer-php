@@ -195,15 +195,15 @@ class SyncedTimer
 
     private function _handleBalanceRemove()
     {
-
-        $this->_storageHelper->removePurchase(
+        $success = $this->_storageHelper->removePurchase(
             "balance",
             $_SESSION["auth"]["username"],
             $_POST["name"],
             $_POST["amount"],
             $_POST["time"]
-
         );
+
+        $_SESSION['lastResult'] = $success ? "purchaseDeleteSuccess":"purchaseDeleteError";
     }
 
 
