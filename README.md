@@ -1,3 +1,5 @@
+# [Please take a look at the new money-balancer](https://github.com/dorianim/money-balancer.git)
+
 <h1 align="center">
     Money-balancer
 </h1>
